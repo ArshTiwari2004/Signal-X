@@ -320,7 +320,7 @@ const TrafficMap = () => {
           url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           size: [40, 40],
         },
-        popupHtml: "<div><strong style=\"color: black;\">You are here</strong></div>",
+        popupHtml: "<div><strong style=\"color: black;\">You are here !</strong></div>",
         popupOptions: {
           openPopup: true,
           autoClose: false,
