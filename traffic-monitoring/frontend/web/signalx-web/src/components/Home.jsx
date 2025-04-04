@@ -374,7 +374,7 @@ const Home = () => {
           >
             Download Mobile App <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <span className="text-sm text-gray-300 mt-2">only for citizens</span>
+          <span className="text-sm text-gray-300 mt-2">Only for Citizens</span>
         </div>
       </div>
     </motion.div>
@@ -556,33 +556,33 @@ const Home = () => {
 
       {/* Team Section */}
       <section id="team" className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/90 backdrop-blur-sm"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-16 text-center text-blue-300"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-          >
-            Meet The Team
-          </motion.h2>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/90 backdrop-blur-sm"></div>
+  <div className="container mx-auto px-4 relative z-10">
+    <motion.h2 
+      className="text-3xl md:text-4xl font-bold mb-16 text-center text-blue-300"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
+      Meet The Team
+    </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <TeamMember
-                key={index}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-                techStack={member.techStack}
-                socials={member.socials}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {teamMembers.map((member, index) => (
+        <TeamMember
+          key={index}
+          name={member.name}
+          role={member.role}
+          image={member.image}
+          techStack={member.techStack}
+          socials={member.socials}
+          index={index}
+        />
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="py-20 relative">
@@ -617,7 +617,7 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4 text-blue-300">Signal-X</h3>
+              <h3 className="text-xl font-bold mb-4 text-blue-300">Signal-gX</h3>
               <p className="text-gray-300">AI-powered Smart Traffic Management System </p>
             </div>
 
