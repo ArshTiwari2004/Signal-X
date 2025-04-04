@@ -1,0 +1,25 @@
+{
+  "name": "signalx-backend",
+  "version": "1.0.0",
+  "description": "Backend server for sending SMS alerts via Twilio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Heisenberg",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
+    "twilio": "^5.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
