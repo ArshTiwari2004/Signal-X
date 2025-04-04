@@ -6,6 +6,8 @@ import TrafficMap from '../pages/Trafficmap';
 import Monitoring from '../pages/Livemonitoring';
 import LiveMonitoring from '../pages/Livemonitoring';
 import CCTVFeeds from '../pages/CCTVFeeds';
+import Analytics from '../pages/Analytics';
+import Alerts from '../pages/Alerts';
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
             {
                 path: "/cctv",
                 element: <CCTVFeeds />,
+            },
+            {
+                path: "/analytics",
+                element: <Analytics />,
+            },
+            {
+                path: "/alerts",
+                element: <Alerts />,
             }
 
 ]}
