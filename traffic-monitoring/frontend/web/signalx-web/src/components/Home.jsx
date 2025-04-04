@@ -352,32 +352,36 @@ const Home = () => {
     </motion.p>
     
     <motion.div 
-      className="flex flex-col items-center mt-6"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.6 }}
+  className="flex flex-col items-center mt-6"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.6 }}
+>
+  <div className="flex flex-col sm:flex-row gap-4">
+    <Button
+      size="md"
+      className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full px-8 py-4 shadow-lg shadow-blue-500/30 font-medium flex items-center justify-center transition-all duration-300 text-lg w-64 h-16"
+      onClick={() => window.location.href = '/dashboard'}
     >
-      <div className="flex space-x-4 ">
-        <Button
-          size="md"
-          className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full px-10 py-4 shadow-lg shadow-blue-500/30 font-medium flex items-center transition-all duration-300 text-lg"
-          onClick={() => window.location.href = '/dashboard'}
-        >
-          Get Started <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
-        
-        <div className="flex flex-col items-center">
-          <Button
-            size="md"
-            className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-full px-10 py-4 shadow-lg shadow-red-500/30 font-medium flex items-center transition-all duration-300 text-lg"
-            onClick={() => window.location.href = '/dashboard'}
-          >
-            Download Mobile App <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <span className="text-sm text-gray-300 mt-2">Only for Citizens</span>
-        </div>
-      </div>
-    </motion.div>
+      <span className="flex items-center">
+        Get Started <ArrowRight className="ml-2 h-5 w-5" />
+      </span>
+    </Button>
+    
+    <div className="flex flex-col items-center">
+      <Button
+        size="md"
+        className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-full px-8 py-4 shadow-lg shadow-red-500/30 font-medium flex items-center justify-center transition-all duration-300 text-lg w-64 h-16"
+        onClick={() => window.location.href = '/dashboard'}
+      >
+        <span className="flex items-center flex-wrap text-center">
+          Download Mobile App 
+        </span>
+      </Button>
+      <span className="text-sm text-gray-300 mt-2">Only for Citizens</span>
+    </div>
+  </div>
+</motion.div>
   </div>
 
   <motion.div 
@@ -404,10 +408,10 @@ const Home = () => {
 
       {/*Stats Section */}
       
-<section id="stats" className="relative py-16 bg-black/70">
-  <div className="absolute inset-0 z-0">
+ <section id="stats" className="relative py-16 bg-black/70">
+   <div className="absolute inset-0 z-0">
     <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-black/90 z-10"></div>
-  </div>
+   </div>
 
   <div className="container mx-auto px-4 relative z-10">
     <motion.div 
@@ -705,7 +709,7 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4 text-blue-300">Signal-gX</h3>
+              <h3 className="text-xl font-bold mb-4 text-blue-300">Signal-X</h3>
               <p className="text-gray-300">AI-powered Smart Traffic Management System </p>
             </div>
 
