@@ -386,7 +386,7 @@ const Home = () => {
     animate={{ opacity: 1 }}
     transition={{ duration: 0.8, delay: 1 }}
   >
-    <a href="#about" className="animate-bounce">
+    <a href="#stats" className="animate-bounce">
       <svg
         className="w-6 h-6 text-white"
         fill="none"
@@ -401,6 +401,94 @@ const Home = () => {
     </a>
   </motion.div>
 </section>
+
+      {/*Stats Section */}
+      
+<section id="stats" className="relative py-16 bg-black/70">
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-black/90 z-10"></div>
+  </div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <motion.div 
+      className="max-w-4xl mx-auto text-center mb-10"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-300">Making a Real Impact</h2>
+      <p className="text-lg text-gray-100">
+        Our AI-powered solution is transforming urban traffic management with measurable results
+      </p>
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {/* Stat Card 1 */}
+      <motion.div 
+        className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 shadow-xl overflow-hidden relative group"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        whileHover={{ y: -5 }}
+      >
+        <div className="absolute inset-0 bg-blue-600/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+        <div className="relative z-10">
+          <h3 className="text-xl font-semibold mb-3 text-gray-200">Waiting Time Reduction</h3>
+          <div className="flex items-end mb-4">
+            <span className="text-5xl font-bold text-blue-400">40%</span>
+            <span className="text-blue-300 ml-2 mb-1">decrease</span>
+          </div>
+          <p className="text-gray-300">
+            Average vehicle waiting times at major intersections drastically reduced
+          </p>
+          
+          <div className="mt-4 pt-4 border-t border-gray-700">
+            <div className="w-full bg-gray-700 rounded-full h-2.5">
+              <div className="bg-blue-400 h-2.5 rounded-full" style={{ width: '40%' }}></div>
+            </div>
+            <div className="flex justify-between mt-1 text-xs text-gray-400">
+              <span>Previous</span>
+              <span>Current</span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Stat Card 2 */}
+      <motion.div 
+        className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 shadow-xl overflow-hidden relative group"
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        whileHover={{ y: -5 }}
+      >
+        <div className="absolute inset-0 bg-indigo-600/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+        <div className="relative z-10">
+          <h3 className="text-xl font-semibold mb-3 text-gray-200">Queue Length Decreased</h3>
+          <div className="flex items-end mb-4">
+            <span className="text-5xl font-bold text-indigo-400">42%</span>
+            <span className="text-indigo-300 ml-2 mb-1">reduction</span>
+          </div>
+          <p className="text-gray-300">
+            Vehicle queue lengths during peak hours significantly shortened
+          </p>
+          
+          <div className="mt-4 pt-4 border-t border-gray-700">
+            <div className="w-full bg-gray-700 rounded-full h-2.5">
+              <div className="bg-indigo-400 h-2.5 rounded-full" style={{ width: '42%' }}></div>
+            </div>
+            <div className="flex justify-between mt-1 text-xs text-gray-400">
+              <span>Previous</span>
+              <span>Current</span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+    </div>
+    </section>
 
       {/* About Section */}
       <section id="about" className="py-20 relative">
