@@ -54,8 +54,6 @@ class TrafficDetector:
                 vehicles_count += 1
                 
                 # Check if it might be an ambulance (using custom logic)
-                # In a real system, this would use a specialized model or additional sensors
-                # For now, we'll use a placeholder based on size and class
                 vehicle_width = x2 - x1
                 vehicle_height = y2 - y1
                 vehicle_area = vehicle_width * vehicle_height
@@ -63,9 +61,6 @@ class TrafficDetector:
                 # Draw bounding box
                 color = (0, 255, 0)  # Green for regular vehicles
                 
-                # This is a simplified ambulance detection 
-                # In reality, we would need a more sophisticated approach
-                # Using sound sensors, which would be ideal
                 if class_id == self.ambulance_class and vehicle_area > 15000:
                     has_ambulance = True
                     color = (0, 0, 255)  # Red for ambulance
@@ -142,35 +137,77 @@ class TrafficDetector:
 
 def get_test_frames():
     """
-    Get test frames for each lane from test images or video
-    For demo purposes
-    
-    Returns:
-        frames: Dictionary of frames, with lane IDs as keys
+    Get test frames for each lane from test images
+    Now with better debugging and more flexible file search
     """
-    # For demo, we will use the same image for all lanes
-    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
-    test_image_path = os.path.join(data_dir, "test_image.png")
+    frames = {}
     
-    if os.path.exists(test_image_path):
-        frame = cv2.imread(test_image_path)
-        if frame is not None:
-            return {
-                1: frame.copy(),
-                2: frame.copy(),
-                3: frame.copy(),
-                4: frame.copy()
-            }
+    # Get the absolute path to the data directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(current_dir, "data")  # Changed from "..", "data" to just "data"
     
-    # If test image not found, generate dummy frames
-    print("Test image not found, generating dummy frames")
-    dummy_frame = np.zeros((480, 640, 3), dtype=np.uint8)
-    return {
-        1: dummy_frame.copy(),
-        2: dummy_frame.copy(),
-        3: dummy_frame.copy(),
-        4: dummy_frame.copy()
-    }
+    print("\n=== DEBUGGING INFORMATION ===")
+    print(f"Current directory: {current_dir}")
+    print(f"Looking for images in: {data_dir}")
+    
+    # Check if data directory exists
+    if not os.path.exists(data_dir):
+        print(f"ERROR: Data directory not found at {data_dir}")
+        print("Creating data directory...")
+        os.makedirs(data_dir, exist_ok=True)
+    
+    # List all files in data directory for debugging
+    print("\nFiles found in data directory:")
+    try:
+        for f in os.listdir(data_dir):
+            print(f" - {f}")
+    except FileNotFoundError:
+        print(" (none - directory doesn't exist)")
+    
+    # Try multiple possible file patterns
+    file_patterns = [
+        "test_image_{}.png",    # test_image_1.png
+        "test_{}.png",          # test_1.png
+        "lane_{}.png",          # lane_1.png
+        "image_{}.jpg",         # image_1.jpg
+        "test{}.jpg"            # test1.jpg
+    ]
+    
+    found_images = 0
+    
+    for lane_id in range(1, 5):
+        frame = None
+        
+        # Try multiple possible filename patterns
+        for pattern in file_patterns:
+            test_image_path = os.path.join(data_dir, pattern.format(lane_id))
+            if os.path.exists(test_image_path):
+                frame = cv2.imread(test_image_path)
+                if frame is not None:
+                    print(f"\nSUCCESS: Found image for lane {lane_id} at:")
+                    print(f" - {test_image_path}")
+                    frames[lane_id] = frame
+                    found_images += 1
+                    break
+        
+        # If no image found, create dummy frame
+        if frame is None:
+            print(f"\nWARNING: No image found for lane {lane_id}")
+            dummy_frame = np.zeros((480, 640, 3), dtype=np.uint8)
+            cv2.putText(dummy_frame, f"Lane {lane_id} (dummy)", (50, 50), 
+                       cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            frames[lane_id] = dummy_frame
+    
+    print(f"\n=== SUMMARY ===")
+    print(f"Found images for {found_images}/4 lanes")
+    if found_images < 4:
+        print("NOTE: Please ensure your images are:")
+        print("- In the 'data' folder next to your script")
+        print("- Named like: test_image_1.png, test_image_2.png, etc.")
+        print("- Supported formats: .png or .jpg")
+    
+    return frames
+
 
 if __name__ == "__main__":
     # Demo usage

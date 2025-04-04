@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Detection System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .lane {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: 45%;
+            max-width: 640px;
+        }
+        .lane-title {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .lane-stats {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .stat {
+            margin: 5px 0;
+        }
+        .vehicle-count {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .ambulance-count {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .priority {
+            color: #e74c3c;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .video-container {
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Traffic Detection System</h1>
+    <div class="container">
+        {% for lane_id in [1, 2, 3, 4] %}
+        <div class="lane">
+            <div class="lane-title">Lane {{ lane_id }}</div>
+            <div class="lane-stats">
+                <div class="stat">Vehicles detected: <span class="vehicle-count">{{ lane_data[lane_id]['vehicles_count'] }}</span></div>
+                <div class="stat">Ambulances detected: <span class="ambulance-count">{{ lane_data[lane_id]['ambulance_count'] }}</span></div>
+                {% if lane_data[lane_id]['ambulance_count'] > 0 %}
+                <div class="stat priority">Priority Lane - Green Light Required</div>
+                {% endif %}
+            </div>
+            <div class="video-container">
+                <img src="{{ url_for('video_feed', lane_id=lane_id) }}" alt="Live video feed for lane {{ lane_id }}" title="Live video feed for lane {{ lane_id }}">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
