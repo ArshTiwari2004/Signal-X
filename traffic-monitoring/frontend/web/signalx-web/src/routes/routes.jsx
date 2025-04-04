@@ -8,6 +8,7 @@ import LiveMonitoring from '../pages/Livemonitoring';
 import CCTVFeeds from '../pages/CCTVFeeds';
 import Analytics from '../pages/Analytics';
 import Alerts from '../pages/Alerts';
+import Settings from '../pages/Settings';
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: "/alerts",
                 element: <Alerts />,
+            },
+            {
+                path: "/settings",
+                element: <Settings />,
             }
 
 ]}
