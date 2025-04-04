@@ -62,7 +62,7 @@ const Sidebar = () => {
         <div className="bg-blue-600 p-2 rounded-lg">
           <Map className="w-6 h-6 text-white" />
         </div>
-        {!collapsed && <h1 className="text-xl font-bold tracking-tight">SignalX</h1>}
+        {!collapsed && <h1 className="text-xl font-bold tracking-tight">Signal-X</h1>}
       </div>
       
       {/* Navigation */}
