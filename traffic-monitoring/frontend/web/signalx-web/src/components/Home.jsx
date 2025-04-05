@@ -144,27 +144,27 @@ const teamMembers = [
     name: "Arsh Tiwari",
     image: "/arsh.png?height=300&width=300",
     socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
+      github: "https://github.com/ArshTiwari2004",
+      linkedin: "https://www.linkedin.com/in/arsh-tiwari-072609284/",
+      twitter: "https://x.com/ArshTiwari17",
     },
   },
   {
     name: "Priyanshi Bothra",
     image: "/priyanshi.png?height=300&width=300",
     socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
+      github: "https://github.com/priyanshi0609",
+      linkedin: "https://www.linkedin.com/in/priyanshi-bothra-339568219/",
+      twitter: "https://x.com/PriyanshiB06",
     },
   },
   {
     name: "Nibedan Pati",
     image: "/nibedan.png?height=300&width=300",
     socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
+      github: "https://github.com/Heisenberg300604",
+      linkedin: "https://www.linkedin.com/in/nibedan-pati-2139b3277/",
+      twitter: "https://x.com/NibedanPati",
     },
   },
   //{
