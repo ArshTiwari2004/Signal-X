@@ -5,7 +5,7 @@
 </p>|
 
 <div align="center">
-  <a href="https://signal-x-kappa.vercel.app/" target="_blank">
+  <a href="https://signal-x-zkh5.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/Live%20Now-0066FF?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Now">
   </a>
   <br><br>
