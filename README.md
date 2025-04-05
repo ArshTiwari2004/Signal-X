@@ -138,7 +138,7 @@ Signal-X revolutionizes traffic management through:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/ArshTiwari2004/Signal-X.git
-   cd signalX
+   cd signal-X
    ```
 2. **Setup Frontend**
     ```bash
