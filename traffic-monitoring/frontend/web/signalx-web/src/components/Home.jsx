@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Twitter, Brain, Clock, Globe, Ambulance, BarChart2, Cloud  } from 'lucide-react';
 import Navbar from './Navbar';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -91,50 +91,52 @@ const TeamMember = ({ name, role, image, techStack, socials, index }) => {
 };
 
 // Features Data
-const features = [
-  {
-    icon: "⿡",
-    title: "AI-Based Traffic Congestion Detection",
-    description:
-      "Uses YOLOv8 Object Detection to detect vehicles on four lanes simultaneously, utilizing multi-processing to analyze real-time CCTV or drone footage and dynamically adjust signal timing.",
-  },
-  {
-    icon: "⿢",
-    title: "IoT-Controlled Traffic Lights",
-    description:
-      "Raspberry Pi & Arduino control traffic lights automatically based on AI predictions, altering green light duration with a Manual Override Mode for traffic police control.",
-  },
-  {
-    icon: "⿣",
-    title: "MapMyIndia API Integration",
-    description:
-      "Fetches real-time traffic data, helps divert traffic dynamically to alternate routes, and displays real-time congestion heatmaps through geospatial visualization.",
-  },
-  {
-    icon: "⿤",
-    title: "Multi-Mode Operation",
-    description:
-      "Features Auto Mode for AI dynamic adjustments, Manual Mode for traffic authorities, and Emergency Mode that prioritizes ambulances & emergency vehicles.",
-  },
-  {
-    icon: "⿥",
-    title: "Real-Time Dashboard",
-    description:
-      "Provides live feed from cameras, traffic density analysis, historical reports & insights, admin control for manual overrides, and predictive analysis using ML trends.",
-  },
-  {
-    icon: "⿦",
-    title: "Cloud-Based Analytics",
-    description:
-      "Stores traffic trends in MongoDB for long-term analytics, generates reports & visualizations for city planners, and predicts peak hours & congestion patterns.",
-  },
+
+  const features = [
+    {
+      icon: <Brain className="h-6 w-6 text-pink-500" />,
+      title: "AI-Powered Traffic Analysis",
+      description:
+        "YOLOv8-based object detection continuously monitors vehicle flow across all junction lanes.",
+    },
+    {
+      icon: <Clock className="h-6 w-6 text-purple-500" />,
+      title: "Dynamic Signal Adjustment",
+      description:
+        "Adaptive signal control based on real-time congestion and traffic density patterns.",
+    },
+    {
+      icon: <Globe className="h-6 w-6 text-blue-500" />,
+      title: "IoT Integration",
+      description:
+        "Raspberry Pi/Arduino-based controllers ensure seamless traffic light control and emergency detection.",
+    },
+    {
+      icon: <BarChart2 className="h-6 w-6 text-teal-500" />,
+      title: "Geospatial Intelligence",
+      description:
+        "Integration with MapMyIndia's API offers live congestion updates and smart rerouting.",
+    },
+    {
+      icon: <Ambulance className="h-6 w-6 text-red-500" />,
+      title: "Emergency Vehicle Prioritization",
+      description:
+        "Automatically detects emergency vehicles (ambulance, fire brigade, police) and gives them green-light priority.",
+    },
+    {
+      icon: <Cloud className="h-6 w-6 text-indigo-500" />,
+      title: "Congestion Prediction",
+      description:
+        "AI models analyze historical + real-time data to predict and prevent traffic bottlenecks.",
+    }
+  ];
   //{
    // icon: "⿧",
    // title: "SMS & Push Notifications",
    // description:
      // "Sends congestion alerts via SMS/WhatsApp and notifies nearby vehicles when an ambulance is approaching for emergency vehicle priority.",
   //},
-];
+
 
 // Team Members Data
 const teamMembers = [
@@ -142,27 +144,27 @@ const teamMembers = [
     name: "Arsh Tiwari",
     image: "/arsh.png?height=300&width=300",
     socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
+      github: "https://github.com/ArshTiwari2004",
+      linkedin: "https://www.linkedin.com/in/arsh-tiwari-072609284/",
+      twitter: "https://x.com/ArshTiwari17",
     },
   },
   {
     name: "Priyanshi Bothra",
     image: "/priyanshi.png?height=300&width=300",
     socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
+      github: "https://github.com/priyanshi0609",
+      linkedin: "https://www.linkedin.com/in/priyanshi-bothra-339568219/",
+      twitter: "https://x.com/PriyanshiB06",
     },
   },
   {
     name: "Nibedan Pati",
     image: "/nibedan.png?height=300&width=300",
     socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
+      github: "https://github.com/Heisenberg300604",
+      linkedin: "https://www.linkedin.com/in/nibedan-pati-2139b3277/",
+      twitter: "https://x.com/NibedanPati",
     },
   },
   //{
