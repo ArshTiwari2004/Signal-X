@@ -10,6 +10,8 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { TabNavigator } from '../components/TabNavigator';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import VoiceAlert from '../screens/VoiceAlert';
+
 
 const Stack = createStackNavigator();
 
@@ -36,6 +38,7 @@ const AppNavigator = () => {
           <Stack.Screen name="ReportHistory" component={ReportHistory} />
           <Stack.Screen name="Login" component= {LoginScreen} />
           <Stack.Screen name="Register" component= {RegisterScreen} />
+          <Stack.Screen name="Voice" component= {VoiceAlert} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
