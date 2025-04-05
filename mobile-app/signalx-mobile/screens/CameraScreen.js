@@ -461,6 +461,7 @@ const IncidentReportScreen = ({ navigation }) => {
   const [analyzing, setAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [validated, setValidated] = useState(false);
+  const [summarizing, setSummarizing] = useState(false);
 
   // Location and Permission Setup
   useEffect(() => {
@@ -581,95 +582,156 @@ const IncidentReportScreen = ({ navigation }) => {
   // };
 
   // First, let's improve the error handling in the analyzeContent function
-const analyzeContent = async () => {
-  if (!title || !description) {
-    Alert.alert('Missing Information', 'Please fill in both title and description');
-    return;
-  }
-
-  try {
-    setAnalyzing(true);
-    
-    // Check if API key is available
-    if (!GEMINI_API_KEY) {
-      throw new Error('Gemini API key is not configured');
-    }
-    
-    console.log('Sending request to Gemini API...');
-    
-    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: `Analyze if the following incident report is relevant to a road blockage scenario. 
-            Title: ${title}
-            Description: ${description}
-            
-            Provide feedback in the following JSON format:
-            {
-              "isRelevant": boolean (true if it's about a road blockage, otherwise false),
-              "suggestion": string (brief suggestion for improvement if not relevant),
-              "summary": string (brief summary of the incident if relevant)
-            }`
-          }]
-        }]
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Gemini API error response:', errorText);
-      throw new Error(`API returned status ${response.status}: ${errorText}`);
-    }
-
-    const data = await response.json();
-    console.log('Gemini API response received:', JSON.stringify(data).substring(0, 200) + '...');
-    
-    // Check if the response has the expected structure
-    if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts) {
-      throw new Error('Unexpected response format from Gemini API');
-    }
-    
-    // Extract the text response
-    const responseText = data.candidates[0].content.parts[0].text;
-    
-    // Parse the JSON from the response text
-    let jsonResult;
-    try {
-      // Find JSON object in the response text
-      const jsonMatch = responseText.match(/{[\s\S]*}/);
-      if (jsonMatch) {
-        jsonResult = JSON.parse(jsonMatch[0]);
-      } else {
-        throw new Error('No valid JSON found in response');
-      }
-    } catch (jsonError) {
-      console.error('Error parsing JSON from Gemini response:', jsonError, 'Response text:', responseText);
-      Alert.alert('Analysis Error', 'Unable to analyze the report content. Please try again.');
-      setAnalyzing(false);
+  const analyzeContent = async () => {
+    if (!title || !description) {
+      Alert.alert('Missing Information', 'Please fill in both title and description');
       return;
     }
-    
-    setAnalysisResult(jsonResult);
-    setValidated(jsonResult.isRelevant);
-    
-    if (!jsonResult.isRelevant) {
-      Alert.alert('Not Relevant', 'Your report doesn\'t appear to be about a road blockage. Please revise your description.');
-    } else {
-      Alert.alert('Validated', 'Your report has been validated successfully.');
+  
+    try {
+      setAnalyzing(true);
+      
+      // Check if API key is available
+      if (!GEMINI_API_KEY) {
+        throw new Error('Gemini API key is not configured');
+      }
+      
+      console.log('Sending request to Gemini API...');
+      
+      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: `Analyze if the following incident report is relevant to a road blockage scenario. 
+              Title: ${title}
+              Description: ${description}
+              
+              Provide feedback in the following JSON format:
+              {
+                "isRelevant": boolean (true if it's about a road blockage, otherwise false),
+                "suggestion": string (brief suggestion for improvement if not relevant),
+                "summary": string (brief summary of the incident if relevant)
+              }`
+            }]
+          }]
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Gemini API error response:', errorText);
+        throw new Error(`API returned status ${response.status}: ${errorText}`);
+      }
+  
+      const data = await response.json();
+      console.log('Gemini API response received:', JSON.stringify(data).substring(0, 200) + '...');
+      
+      // Check if the response has the expected structure
+      if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts) {
+        throw new Error('Unexpected response format from Gemini API');
+      }
+      
+      // Extract the text response
+      const responseText = data.candidates[0].content.parts[0].text;
+      
+      // Parse the JSON from the response text
+      let jsonResult;
+      try {
+        // Find JSON object in the response text
+        const jsonMatch = responseText.match(/{[\s\S]*}/);
+        if (jsonMatch) {
+          jsonResult = JSON.parse(jsonMatch[0]);
+        } else {
+          throw new Error('No valid JSON found in response');
+        }
+      } catch (jsonError) {
+        console.error('Error parsing JSON from Gemini response:', jsonError, 'Response text:', responseText);
+        Alert.alert('Analysis Error', 'Unable to analyze the report content. Please try again.');
+        setAnalyzing(false);
+        return;
+      }
+      
+      setAnalysisResult(jsonResult);
+      setValidated(jsonResult.isRelevant);
+      
+      if (!jsonResult.isRelevant) {
+        Alert.alert('Not Relevant', 'Your report doesn\'t appear to be about a road blockage. Please revise your description.');
+      } else {
+        Alert.alert('Validated', 'Your report has been validated successfully.');
+      }
+    } catch (error) {
+      console.error('Error analyzing content with Gemini:', error);
+      Alert.alert('Analysis Error', `Unable to analyze the report content: ${error.message}`);
+    } finally {
+      setAnalyzing(false);
     }
-  } catch (error) {
-    console.error('Error analyzing content with Gemini:', error);
-    Alert.alert('Analysis Error', `Unable to analyze the report content: ${error.message}`);
-  } finally {
-    setAnalyzing(false);
-  }
-};
-
+  };
+  
+  // New function to summarize description text
+  const summarizeDescription = async () => {
+    if (!description || description.trim() === '') {
+      Alert.alert('Missing Content', 'Please enter a description to summarize');
+      return;
+    }
+  
+    try {
+      setSummarizing(true);
+      
+      // Check if API key is available
+      if (!GEMINI_API_KEY) {
+        throw new Error('Gemini API key is not configured');
+      }
+      
+      console.log('Sending summarization request to Gemini API...');
+      
+      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: `Summarize the following road blockage incident description in about 2-3 concise sentences. 
+              Keep only the most important details about the location, cause, and impact.
+              
+              Original Description: ${description}`
+            }]
+          }]
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Gemini API error response:', errorText);
+        throw new Error(`API returned status ${response.status}: ${errorText}`);
+      }
+  
+      const data = await response.json();
+      
+      // Check if the response has the expected structure
+      if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts) {
+        throw new Error('Unexpected response format from Gemini API');
+      }
+      
+      // Extract the summary text
+      const summary = data.candidates[0].content.parts[0].text.trim();
+      setDescription(summary);
+      
+      Alert.alert('Description Summarized', 'Your incident description has been summarized successfully.');
+      
+    } catch (error) {
+      console.error('Error summarizing content with Gemini:', error);
+      Alert.alert('Summarization Error', `Unable to summarize the description: ${error.message}`);
+    } finally {
+      setSummarizing(false);
+    }
+  };
+  
   // Submit Incident Report
   const handleSubmit = async () => {
     if (!validated) {
@@ -740,12 +802,12 @@ const analyzeContent = async () => {
       setLoading(false);
     }
   };  
-
+  
   // Remove Media File
   const removeMediaFile = (index) => {
     setMediaFiles(prev => prev.filter((_, i) => i !== index));
   };
-
+  
   return (
     <ScrollView 
       style={styles.scrollContainer}
@@ -761,7 +823,7 @@ const analyzeContent = async () => {
         />
         <Text style={styles.headerTitle}>Report Road Blockage</Text>
       </View>
-
+  
       {/* Incident Title Input */}
       <TextInput
         label="Incident Title"
@@ -776,7 +838,7 @@ const analyzeContent = async () => {
           } 
         }}
       />
-
+  
       {/* Description Input */}
       <TextInput
         label="Describe the Road Blockage"
@@ -793,19 +855,32 @@ const analyzeContent = async () => {
           } 
         }}
       />
-
-      {/* Analysis Button */}
-      <Button 
-        mode="outlined" 
-        onPress={analyzeContent}
-        style={styles.analyzeButton}
-        loading={analyzing}
-        disabled={analyzing || !title || !description}
-        icon="check-circle-outline"
-      >
-        Validate Content
-      </Button>
-
+  
+      {/* Summarize and Analyze Buttons */}
+      <View style={styles.buttonRow}>
+        <Button 
+          mode="outlined" 
+          onPress={summarizeDescription}
+          style={[styles.button, styles.summarizeButton]}
+          loading={summarizing}
+          disabled={summarizing || !description}
+          icon="format-text"
+        >
+          Summarize
+        </Button>
+  
+        <Button 
+          mode="outlined" 
+          onPress={analyzeContent}
+          style={[styles.button, styles.analyzeButton]}
+          loading={analyzing}
+          disabled={analyzing || !title || !description}
+          icon="check-circle-outline"
+        >
+          Validate
+        </Button>
+      </View>
+  
       {/* Analysis Result */}
       {analysisResult && (
         <View style={styles.analysisContainer}>
@@ -825,7 +900,7 @@ const analyzeContent = async () => {
           </View>
         </View>
       )}
-
+  
       {/* Severity Selection */}
       <View style={styles.severityContainer}>
         <Text style={styles.sectionTitle}>Severity Level</Text>
@@ -846,7 +921,7 @@ const analyzeContent = async () => {
           ))}
         </View>
       </View>
-
+  
       {/* Media Capture */}
       <View style={styles.mediaCaptureContainer}>
         <Text style={styles.sectionTitle}>Add Media</Text>
@@ -866,7 +941,7 @@ const analyzeContent = async () => {
             <Text style={styles.mediaButtonText}>Video</Text>
           </TouchableOpacity>
         </View>
-
+  
         {/* Media Preview */}
         <ScrollView 
           horizontal 
@@ -889,7 +964,7 @@ const analyzeContent = async () => {
           ))}
         </ScrollView>
       </View>
-
+  
       {/* Location */}
       {location && (
         <View style={styles.locationContainer}>
@@ -910,7 +985,7 @@ const analyzeContent = async () => {
           </Text>
         </View>
       )}
-
+  
       {/* Submit Button */}
       <Button 
         mode="contained" 
@@ -923,8 +998,7 @@ const analyzeContent = async () => {
         Submit Incident Report
       </Button>
     </ScrollView>
-  );
-};
+  )};
 
 const styles = StyleSheet.create({
   container: {
@@ -1040,6 +1114,7 @@ const styles = StyleSheet.create({
   },
   // New styles for Gemini integration
   analyzeButton: {
+   
     marginBottom: 20,
     borderColor: colors.primary,
   },
@@ -1047,7 +1122,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     borderRadius: 10,
     marginBottom: 20,
-    padding: 15,
+    padding: 30,
     flexDirection: 'row',
     alignItems: 'flex-start',
     borderWidth: 1,
@@ -1072,6 +1147,20 @@ const styles = StyleSheet.create({
     color: '#555',
     fontSize: 14,
     lineHeight: 20,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 15,
+  },
+  
+  button: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
+  
+  summarizeButton: {
+    borderColor: '#FF9500',
   }
 });
 
