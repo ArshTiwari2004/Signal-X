@@ -436,3 +436,8 @@ signal-x/
 - Commit your changes (git commit -m 'Add some amazing feature')
 - Push to the branch (git push origin feature/amazing-feature)
 - Open a Pull Request
+
+
+
+**❤️ Made with love by Team Synapse — Arsh Tiwari, Priyanshi Bothra, and Nibedan Pati**
+- 📩 Have a suggestion or want to connect? Drop a mail at: arshtiwari12345@gmail.com
