@@ -171,26 +171,77 @@ Signal-X operates through a seamless, AI-driven pipeline that integrates video p
 
 ## 💻 Technology Stack
 
-### Frontend
-- **React** - UI library for building the dashboard
-- **MapMyIndia SDK** - For maps integration and geospatial visualization
-- **WebSocket** - For real-time communication with the backend
+## 🧰 Tech Stack – What Powers Signal-X 🚦
 
-### Backend
-- **Flask** - Python web framework for the API
-- **MongoDB** - Database for storing traffic data and patterns
-- **WebSocket** - For real-time data transmission
+Signal-X is built using a powerful blend of **AI, hardware, geospatial analytics, real-time systems, and scalable web technologies**. Here's everything under the hood:
 
-### AI & Computer Vision
-- **YOLOv8** - For real-time object detection
-- **DeepSORT** - For object tracking
-- **OpenCV** - For image processing
-- **Python** - Primary programming language
+---
 
-### Hardware
-- **Raspberry Pi** - For edge computing and signal control
-- **Arduino** - For sensor integration
-- **CCTV Cameras** - For traffic monitoring
+### 🌐 Frontend – **React Dashboard**
+
+| Tech | Purpose |
+|------|---------|
+| ⚛️ React.js | Dynamic, component-based UI |
+| 🗺️ MapMyIndia SDK | Interactive maps & live traffic visualization |
+| 🌈 Tailwind CSS | Modern utility-first styling |
+| 📡 WebSocket | Real-time UI updates & traffic stats |
+| 🔗 Axios | API requests and data fetching |
+| 📱 React Native (Expo) | Mobile traffic monitor app (optional extension) |
+
+---
+
+### 🧠 AI & Computer Vision – **Smart Traffic Brain**
+
+| Tech | Purpose |
+|------|---------|
+| 🧠 YOLOv8 | High-speed vehicle detection & classification |
+| 🎥 OpenCV (cv2) | Image & video stream processing |
+| 📊 NumPy, SciPy | Traffic data analytics |
+| 📈 Matplotlib | Data visualization and graphs |
+| 🔬 Ultralytics | YOLOv8 training and inference |
+| 🧠 Reinforcement Learning | Intelligent signal timing optimization |
+
+---
+
+### 🧪 Backend – **Core Logic & APIs**
+
+| Tech | Purpose |
+|------|---------|
+| 🐍 Flask | RESTful API backend (Python) |
+| 🌐 WebSocket (Flask-SocketIO) | Real-time data sync with frontend |
+| 🍃 MongoDB | NoSQL database for storing traffic history & logs |
+| ⚙️ Express.js + Node.js | API support for mobile & hardware integrations |
+
+---
+
+### 🔌 Hardware – **IoT-Powered Signal Controller**
+
+| Component | Role |
+|-----------|------|
+| 💡 Arduino UNO | Signal & sensor control unit |
+| 🔊 CZN15E Sound Sensor | Detects approaching emergency sirens |
+| 🎥 OV7670 Camera Module | Captures live video for CV analysis |
+| 📏 HC-SR04 Ultrasonic Sensor | Measures distance & lane occupancy |
+| 💡 LEDs, 🧲 Buzzer, 🔌 Jumper Wires, 🔳 Breadboard | Circuit components for signal light system |
+| 🧠 Arduino IDE + Embedded C/C++ | Logic programming and testing |
+| 🖥️ Serial Monitor | Debugging and communication with PC |
+
+---
+
+### 🎮 Bonus Tools & Utilities
+
+| Tool | Use |
+|------|-----|
+| 🧩 Pygame | Simulating traffic flow for testing |
+| 📈 Scikit-learn | Optional ML utilities |
+| 🧪 Matplotlib | Data analysis visualization |
+| 🧠 Gemini API | Optional AI assistance (integration idea) |
+
+---
+
+> 🚀 Signal-X combines **real-world sensors**, **cutting-edge AI**, and **cloud-based data pipelines** to create a future-ready traffic management solution.
+
+---
 
 ## 🚀 Getting Started
 
@@ -198,14 +249,17 @@ Signal-X operates through a seamless, AI-driven pipeline that integrates video p
 - Python 3.8+
 - Node.js and npm
 - MongoDB
-- MapMyIndia API key
+- MapmyIndia API key
+- Gemini API key 
+- Arduino IDE 
+
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/ArshTiwari2004/Signal-X.git
-   cd signal-X
+   cd Signal-X
    ```
 2. **Setup Frontend**
     ```bash
@@ -238,8 +292,44 @@ Signal-X operates through a seamless, AI-driven pipeline that integrates video p
    ```
    cd mobile-app/signalx-mobile
    npm i
+   ```
+9. **Set up your GEMINI_API_KEY in .env**
+   ```
+   VITE_GEMINI_API_KEY=your_gemini_api_key
+   ```
+10. **Run the app**
+   ```
    npx expo start
    ```
+11. **Setting up the expo backend**
+   ```
+   cd mobile-app/mobile-backend
+   npm i 
+   ```
+12. **Set up env variables for expo backend**
+    ```
+     TWILIO_ACCOUNT_SID=your_twilio_account_sid_here
+     TWILIO_AUTH_TOKEN=your_twilio_auth_token_here 
+     TWILIO_PHONE_NUMBER=your_twilio_phone_number_here 
+     MONGO_URI=your_mongodb_connection_string_here
+    ```
+
+13. **Run the Mobile Backend Server**
+    ```
+    npm run dev 
+    ``` 
+14. **Setup the 
+    
+```bash 
+# ⚙️ How to Upload 
+1. Open the `.ino` files using the Arduino IDE. 
+2. Select the correct board and port: - Tools > Board > (e.g., Arduino UNO) - Tools > Port > (Select the connected COM port) 
+3. Connect your Arduino (e.g., UNO, Nano, etc.) via USB. 
+4. Click the "Upload" button in the Arduino IDE (➡️ icon). 
+5. Ensure all required components (Servo motors, LEDs, Buzzer, etc.) are connected as per the logic in the code. 
+```
+
+
 
 # Project Structure
 
