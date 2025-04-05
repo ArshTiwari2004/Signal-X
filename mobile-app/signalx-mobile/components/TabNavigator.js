@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../constants/colors';
 import { Ionicons } from '@expo/vector-icons';
 import AlertScreen from '../screens/AlertScreen';
-
+import VoiceAlert from '../screens/VoiceAlert';
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = () => {
@@ -25,6 +25,8 @@ export const TabNavigator = () => {
             iconName = focused ? 'list' : 'list-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
+          }else if (route.name === 'Voice') {
+            iconName = focused ? 'alert' : 'alert-outline';
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -38,6 +40,7 @@ export const TabNavigator = () => {
       <Tab.Screen name="Alerts" component={AlertScreen}/>
       <Tab.Screen name="History" component={ReportHistory} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Voice" component={VoiceAlert} />
     </Tab.Navigator>
   )
 }
