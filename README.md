@@ -5,11 +5,11 @@
 </p>|
 
 <div align="center">
-  <a href="https://signal-x-zkh5.vercel.app/" target="_blank">
+  <a href="https://signal-x-zkh5.vercel.app/"target="_blank">
     <img src="https://img.shields.io/badge/Live%20Now-0066FF?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Now">
   </a>
   <br><br>
-  <p style="font-size: 16px; color: #666;">Click the button above to visit the live version of the SignalX project hosted on Vercel.</p>
+  <p style="font-size: 16px; color: #666;">Click the button above to visit the live version of the Signal-X project hosted on Vercel.</p>
 </div>
 
 <div align ="center">
@@ -137,12 +137,12 @@ Signal-X revolutionizes traffic management through:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/priyanshi0609/SignalX.git
-   cd signalX
+   git clone https://github.com/ArshTiwari2004/Signal-X.git
+   cd signal-X
    ```
 2. **Setup Frontend**
     ```bash
-    cd traffic-monitoring/frontend/web/signalx-frontend
+    cd traffic-monitoring/frontend/web/signalx-web
     npm install
     ```
 3. **Create a .env file in the root of the frontend directory with:**
