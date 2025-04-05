@@ -23,10 +23,10 @@ const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
 
-  // const handleLogin = () => {
-  //   console.log('Login attempted with:', email, password);
-  //   navigation.navigate('MainTabs');
-  // };
+  const handleLogin = () => {
+    console.log('Login attempted with:', email, password);
+    navigation.navigate('MainTabs');
+  };
   const validateForm = () => {
     let valid = true;
     const newErrors = { email: '', password: '' };
@@ -51,49 +51,49 @@ const LoginScreen = () => {
     return valid;
   };
 
-  const handleLogin = async () => {
-    // if (!validateForm()) return;
+  // const handleLogin = async () => {
+  //   // if (!validateForm()) return;
 
-    setLoading(true);
-    try {
-      const response = await axios.post(`${API_BASE_URL}/login`, {
-        email,
-        password
-      });
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.post(`${API_BASE_URL}/login`, {
+  //       email,
+  //       password
+  //     });
 
-      // Store token and user data
-      await AsyncStorage.setItem('authToken', response.data.token);
-      await AsyncStorage.setItem('userData', JSON.stringify(response.data.user));
+  //     // Store token and user data
+  //     await AsyncStorage.setItem('authToken', response.data.token);
+  //     await AsyncStorage.setItem('userData', JSON.stringify(response.data.user));
 
-      // Navigate to main app
-      navigation.navigate('MainTabs');
+  //     // Navigate to main app
+  //     navigation.navigate('MainTabs');
 
-    } catch (error) {
-      let errorMessage = 'Login failed. Please try again.';
-      let fieldErrors = { email: '', password: '' };
+  //   } catch (error) {
+  //     let errorMessage = 'Login failed. Please try again.';
+  //     let fieldErrors = { email: '', password: '' };
 
-      if (error.response) {
-        // Server responded with error status
-        errorMessage = error.response.data.error || errorMessage;
+  //     if (error.response) {
+  //       // Server responded with error status
+  //       errorMessage = error.response.data.error || errorMessage;
         
-        // Highlight problematic field if specified by backend
-        if (error.response.data.field === 'email') {
-          fieldErrors.email = errorMessage;
-        } else if (error.response.data.field === 'password') {
-          fieldErrors.password = errorMessage;
-        }
-      } else if (error.request) {
-        // No response received
-        errorMessage = 'Network error. Please check your connection.';
-      }
+  //       // Highlight problematic field if specified by backend
+  //       if (error.response.data.field === 'email') {
+  //         fieldErrors.email = errorMessage;
+  //       } else if (error.response.data.field === 'password') {
+  //         fieldErrors.password = errorMessage;
+  //       }
+  //     } else if (error.request) {
+  //       // No response received
+  //       errorMessage = 'Network error. Please check your connection.';
+  //     }
 
-      setErrors(fieldErrors);
-      Alert.alert('Error', errorMessage);
-    } finally {
-      setLoading(false);
-    }
-  };
-  
+  //     setErrors(fieldErrors);
+  //     Alert.alert('Error', errorMessage);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
