@@ -1,7 +1,10 @@
-# Signal-X: AI-powered Smart Traffic Management System
 
 <p align="center">
-  <em>AI-powered Smart Traffic Management System</em>
+  <img src="https://readme-typing-svg.demolab.com/?lines=This+is+Signal-X+,+an+AI+Powered+Smart+Traffic+Management+System;&center=true&color:FF0000&width=900&height=50">
+</p>
+
+<p align="center">
+  <em>Breaking the Red Tape of Congestion and Inefficiency</em>
 </p>|
 
 <div align="center">
