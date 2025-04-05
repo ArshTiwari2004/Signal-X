@@ -20,6 +20,7 @@ import MapView, { Marker } from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../constants/colors';
+import { API_URL } from '../config/apiConfig';
 
 const { width, height } = Dimensions.get('window');
 
@@ -50,48 +51,107 @@ const IncidentReportScreen = ({ navigation }) => {
   // Media Capture Handler
   const handleMediaCapture = async (type) => {
     let result;
+  
     if (type === 'photo') {
       result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        mediaTypes: [ImagePicker.MediaType.IMAGE],
         allowsEditing: true,
         quality: 0.7,
       });
     } else if (type === 'video') {
       result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+        mediaTypes: [ImagePicker.MediaType.VIDEO],
         allowsEditing: true,
         quality: 0.7,
       });
     }
-
-    if (!result.canceled) {
+  
+    if (!result.canceled && result.assets?.length > 0) {
+      const file = result.assets[0];
       setMediaFiles(prev => [...prev, {
-        uri: result.assets[0].uri,
-        type: result.assets[0].type
+        uri: file.uri,
+        type: file.type,
       }]);
     }
   };
+  
 
   // Submit Incident Report
+  // const handleSubmit = async () => {
+  //   if (!title || !description) {
+  //     alert('Please fill in all required fields');
+  //     return;
+  //   }
+
+  //   try {
+  //     setLoading(true);
+  //     // Simulated submission
+  //     await new Promise(resolve => setTimeout(resolve, 2000));
+      
+  //     // Reset form or navigate
+  //     navigation.navigate('Dashboard');
+  //   } catch (error) {
+  //     alert('Submission failed');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async () => {
     if (!title || !description) {
       alert('Please fill in all required fields');
       return;
     }
-
+  
+    if (!location) {
+      alert('Location is still being fetched');
+      return;
+    }
+  
+    const formData = new FormData();
+  
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('severity', severity);
+    formData.append('latitude', location.latitude);
+    formData.append('longitude', location.longitude);
+  
+    mediaFiles.forEach((file, index) => {
+      const fileType = file.uri.split('.').pop();
+      formData.append('media', {
+        uri: file.uri,
+        type: file.type === 'video' ? `video/${fileType}` : `image/${fileType}`,
+        name: `media_${index}.${fileType}`
+      });
+    });
+  
     try {
       setLoading(true);
-      // Simulated submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Reset form or navigate
-      navigation.navigate('Dashboard');
+  
+      const response = await fetch(`${API_URL}/report-incident`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        body: formData,
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert('Incident reported successfully!');
+        navigation.navigate('MainTabs');
+      } else {
+        console.log('Server error:', data);
+        alert('Failed to submit: ' + data?.message || 'Unknown error');
+      }
     } catch (error) {
+      console.error('Error submitting incident:', error);
       alert('Submission failed');
     } finally {
       setLoading(false);
     }
-  };
+  };  
 
   // Remove Media File
   const removeMediaFile = (index) => {
