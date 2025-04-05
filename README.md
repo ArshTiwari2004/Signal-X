@@ -325,9 +325,14 @@ signal-x/
 
 ## 🔮 Future Enhancements
 
-- AI-powered license plate recognition 
-- Reinforcement learning can optimize signal patterns dynamically based on historical and real-time traffic flow
-- Detect accidents or vehicle breakdowns.
+## 1. **AI-Powered Red-Light Violation Detection** : 
+- Use AI-based license plate recognition to detect vehicles running red lights. Integrated with government databases, the system can auto-generate challans, improving law enforcement efficiency.
+
+## 2. **Smart Signal Optimization with Reinforcement Learning**: 
+- Leverage reinforcement learning to optimize signal timings based on real-time and historical traffic data, ensuring faster clearance for emergency vehicles and smoother traffic flow.
+
+## 3. **AI-Based Incident Detection & Rerouting**:
+- Utilize AI to detect accidents or breakdowns via CCTV analysis. The system can instantly alert authorities and reroute traffic to prevent congestion.
 
 
 ## 🤝 Contributing
