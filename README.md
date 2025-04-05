@@ -318,7 +318,7 @@ Signal-X is built using a powerful blend of **AI, hardware, geospatial analytics
     ```
     npm run dev 
     ``` 
-14. **Setup the 
+14. **Setup the Arduino IDE**
     
 ```bash 
 # ⚙️ How to Upload 
