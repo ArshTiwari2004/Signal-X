@@ -14,8 +14,8 @@ import {
   Image
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../config/firebase';
+//import { createUserWithEmailAndPassword } from 'firebase/auth';
+//import { auth } from '../config/firebase';
 import { Ionicons } from '@expo/vector-icons'; 
 import { colors } from '../constants/colors';
 
@@ -37,7 +37,7 @@ const RegisterScreen = ({ navigation }) => {
     
     setLoading(true);
     try {
-      await createUserWithEmailAndPassword(auth, data.email, data.password);
+    //   await createUserWithEmailAndPassword(auth, data.email, data.password);
       Alert.alert('Success', 'Registration Successful');
       navigation.navigate('Login');
     } catch (error) {
