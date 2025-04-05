@@ -317,7 +317,7 @@ signal-x/
 ![userflow](userflow.png)
 
 *Snapshots of the Citizen App*
-![Snapshots](Snapshots.png)
+![Snapshots](Mobile.png)
 
 
 
