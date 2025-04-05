@@ -1,16 +1,29 @@
 const mongoose = require('mongoose');
 
 const incidentSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  severity: { type: String, enum: ['Low', 'Medium', 'High'], default: 'Medium' },
+  title: String,
+  description: String,
+  severity: String,
   location: {
     latitude: Number,
     longitude: Number
   },
-  mediaFiles: [String], // paths to uploaded files
-}, {
-  timestamps: true
+  media: [
+    {
+      filename: String,
+      path: String,
+      mimetype: String
+    }
+  ],
+  reportedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: false // or true if you want to enforce auth
+  },
+  reportedAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model('Incident', incidentSchema);

@@ -29,24 +29,56 @@ const RegisterScreen = ({ navigation }) => {
   
   const password = watch("password");
 
+  // const onRegister = async (data) => {
+  //   if (data.password !== data.confirmPassword) {
+  //     Alert.alert('Error', 'Passwords do not match');
+  //     return;
+  //   }
+    
+  //   setLoading(true);
+  //   try {
+  //   //   await createUserWithEmailAndPassword(auth, data.email, data.password);
+  //     Alert.alert('Success', 'Registration Successful');
+  //     navigation.navigate('Login');
+  //   } catch (error) {
+  //     Alert.alert('Error', error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   const onRegister = async (data) => {
+    // Client-side validation for password match
     if (data.password !== data.confirmPassword) {
       Alert.alert('Error', 'Passwords do not match');
       return;
     }
-    
+  
     setLoading(true);
     try {
-    //   await createUserWithEmailAndPassword(auth, data.email, data.password);
-      Alert.alert('Success', 'Registration Successful');
+      const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+        name: data.name,
+        email: data.email,
+        password: data.password
+        // Removed confirmPassword from the request body
+      });
+  
+      Alert.alert('Success', response.data.message || 'Registration successful');
       navigation.navigate('Login');
+      
     } catch (error) {
-      Alert.alert('Error', error.message);
+      let errorMessage = 'Registration failed. Please try again.';
+      
+      if (error.response) {
+        errorMessage = error.response.data.error || errorMessage;
+      } else if (error.request) {
+        errorMessage = 'Network error. Please check your connection.';
+      }
+      
+      Alert.alert('Error', errorMessage);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
