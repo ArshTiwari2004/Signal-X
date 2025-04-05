@@ -175,44 +175,70 @@ Signal-X revolutionizes traffic management through:
    ```
 
 # Project Structure
+
 ```bash
-signalX/
-├── .git/
-├── .vscode/
+signal-x/
+├── Arduino_code/
+│   ├── sketch_Camera/
+│   │   └── sketch_Camera.ino           # Controls CCTV pan/tilt
+│   └── sketch_LED_Buzzer/
+│       └── sketch_LED_Buzzer.ino       # Controls signal lights & alarms
+│
+├── mobile-app/
+│   ├── mobile-backend/
+│   │   ├── config/
+│   │   │   ├── db.js                   # MongoDB connection
+│   │   │   └── dotenv.js               # API keys config
+│   │   ├── models/
+│   │   │   ├── Incident.js             # Report schema
+│   │   │   └── User.js                 # Auth schema
+│   │   └── routes/
+│   │       ├── authRoutes.js           # Login/register endpoints
+│   │       └── incidentRoutes.js       # Report submission
+│   │
+│   └── signalx-mobile/
+│       ├── components/
+│       │   ├── EmergencyAlert.js       # Siren detection UI
+│       │   └── LiveTrafficLight.js     # Real-time signal status
+│       └── screens/
+│           ├── HomeScreen.js           # Main dashboard
+│           └── ReportScreen.js         # Incident form
+│
 ├── traffic-monitoring/
 │   ├── backend/
-│   │   ├── flask_api.py           # Main Flask API (REST + WebSocket)
-│   │   ├── traffic_control.py     # Signal timing logic
-│   │   ├── traffic_detection.py   # YOLO+DeepSORT vehicle tracking
-│   │   ├── emergency_handler.py   # Ambulance detection (audio/siren analysis)
-│   │   ├── models/
-│   │   │   ├── yolo/              # Custom-trained YOLOv8n (Indian vehicles)
-│   │   │   └── siren_detection.h5 # Audio model (TF/Keras)
-│   │   ├── utils/
-│   │   │   ├── mapmyindia.py      # API integration
-│   │   │   └── alerts.py          # Firebase FCM push notifs
-│   │   └── traffic-data.csv       # Historical logs
-│   ├── frontend/                  # React dashboard
-│   │   ├── public/
-│   │   ├── src/
-│   │   │   ├── components/
-│   │   │   │   ├── Heatmap.jsx    # Live congestion view
-│   │   │   │   └── SignalControl.jsx # Manual override UI
-│   │   │   └── App.jsx
-│   ├── simulation/
-│   │   ├── traffic_simulator.py   # Pygame intersection sim
-│   │   └── visualization.py       # Matplotlib analytics
-│   └── temp-audio/                # Siren audio cache
-├── mobile-app/                     # Expo+React Native
-│   ├── components/
-│   │   ├── ReportButton.js        # One-tap reporting
-│   │   └── AlertFeed.js           # Emergency notifications
-│   ├── App.js
-│   └── emergency_api.js           # WebSocket connection
-├── README.md                       # Documentation
-└── requirements.txt                 # Dependencies
+│   │   ├── templates/                  # Admin panel HTML
+│   │   ├── ambulance_detection.py      # Priority vehicle logic
+│   │   └── traffic_control.py          # Signal timing algorithms
+│   │
+│   ├── frontend/
+│   │   └── web/
+│   │       └── signalx-web/
+│   │           └── src/
+│   │               ├── components/     # Reusable UI elements
+│   │               ├── pages/          # Route-specific pages
+│   │               └── routes/         # Navigation config
+│   │
+│   ├── models/                         # AI models
+│   │   ├── yolov8n.pt                 # Vehicle detection weights
+│   │   └── siren_detection.h5         # Audio classification
+│   │
+│   ├── simulations/                    # Traffic simulations
+│   │   ├── rippling_effect.py         # Congestion spread model
+│   │   └── traffic_simulator.py       # Junction flow simulator
+│   │
+│   ├── utils/                          # Utility scripts
+│   │   ├── mapmyindia.py              # Geo API wrapper
+│   │   └── alerts.py                  # Notification system
+│   │
+│   ├── alert.wav                      # Emergency sound
+│   ├── dashboard.png                  # Admin UI mockup
+│   └── README.md                      # Setup instructions
 
 ```
+
+
+
+
 ## 🖼️ Snippets 
 *Landing page of Signal-X*
 ![Landingpage](Landingpage.png)
