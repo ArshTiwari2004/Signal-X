@@ -9,6 +9,8 @@ import CCTVFeeds from '../pages/CCTVFeeds';
 import Analytics from '../pages/Analytics';
 import Alerts from '../pages/Alerts';
 import Settings from '../pages/Settings';
+import Results from '../pages/Results';
+import SignalControlPanel from '../pages/SignalControlPanel';
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +47,15 @@ export const router = createBrowserRouter([
             {
                 path: "/settings",
                 element: <Settings />,
+            },
+            {
+                path: "/results",
+                element: <Results />,
+
+            },
+            {
+                path: "/signal-control",
+                element: <SignalControlPanel />,
             }
 
 ]}

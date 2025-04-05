@@ -119,6 +119,12 @@ class VideoTrafficDetector:
             video_path: Path to input video file
             output_path: Optional path to save processed video
         """
+        # Convert to absolute path and verify file exists
+        video_path = os.path.abspath(video_path)
+        if not os.path.exists(video_path):
+            print(f"Error: Video file not found at {video_path}")
+            return
+            
         cap = cv2.VideoCapture(video_path)
         if not cap.isOpened():
             print(f"Error opening video file {video_path}")
@@ -131,6 +137,8 @@ class VideoTrafficDetector:
         
         # Initialize video writer if output path is specified
         if output_path:
+            output_path = os.path.abspath(output_path)
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')
             out = cv2.VideoWriter(
                 output_path, fourcc, fps, 
@@ -228,9 +236,18 @@ def main():
     # Initializing detector
     detector = VideoTrafficDetector()
     
-    # Path to test video (will change as needed)
-    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    # Get the absolute path to the video file
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(current_dir, "data")
     video_path = os.path.join(data_dir, "test_video.mp4")
+    
+    # Verify the video file exists
+    if not os.path.exists(video_path):
+        print(f"Error: Video file not found at {video_path}")
+        print("Please ensure:")
+        print(f"1. The 'data' folder exists in {current_dir}")
+        print(f"2. The video file 'test_video.mp4' exists in the data folder")
+        return
     
     # Process video
     detector.process_video(video_path)

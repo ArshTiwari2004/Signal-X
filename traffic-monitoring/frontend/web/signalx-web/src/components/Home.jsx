@@ -363,7 +363,7 @@ const Home = () => {
     <Button
       size="md"
       className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full px-8 py-4 shadow-lg shadow-blue-500/30 font-medium flex items-center justify-center transition-all duration-300 text-lg w-64 h-16"
-      onClick={() => window.location.href = '/dashboard'}
+      onClick={() => window.location.href = '/results'}
     >
       <span className="flex items-center">
         Get Started <ArrowRight className="ml-2 h-5 w-5" />
