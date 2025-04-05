@@ -440,4 +440,6 @@ signal-x/
 
 
 **❤️ Made with love by Team Synapse — Arsh Tiwari, Priyanshi Bothra, and Nibedan Pati**
-- 📩 Have a suggestion or want to connect? Drop a mail at: arshtiwari12345@gmail.com
+
+
+📩 Have a suggestion or want to connect? Drop a mail at: arshtiwari12345@gmail.com
