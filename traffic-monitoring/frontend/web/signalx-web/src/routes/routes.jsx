@@ -11,6 +11,7 @@ import Alerts from '../pages/Alerts';
 import Settings from '../pages/Settings';
 import Results from '../pages/Results';
 import SignalControlPanel from '../pages/SignalControlPanel';
+import EmergencyVehicleTracker from '../pages/EmergencyVehicleTracker';
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
             {
                 path: "/signal-control",
                 element: <SignalControlPanel />,
+            },
+            {
+                path: "/emergency-vehicle-tracker",
+                element: <EmergencyVehicleTracker />,
             }
 
 ]}

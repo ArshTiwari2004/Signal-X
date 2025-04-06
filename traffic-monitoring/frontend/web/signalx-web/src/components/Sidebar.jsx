@@ -28,6 +28,7 @@ const Sidebar = () => {
         { icon: Map, label: 'Traffic Map', path: '/trafficmap', badge: null },
         { icon: Activity, label: 'Live Monitoring', path: '/signal-control', badge: { count: '2', color: 'bg-green-500' } },
         { icon: Camera, label: 'CCTV Feeds', path: '/cctv', badge: null },
+        { icon: User, label: 'Track', path: '/emergency-vehicle-tracker', badge: { count: '1', color: 'bg-red-500' } },
       ]
     },
     {

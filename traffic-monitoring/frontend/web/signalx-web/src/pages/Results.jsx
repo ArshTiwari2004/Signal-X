@@ -115,7 +115,7 @@ export default function TrafficResults() {
   }, [isActive]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className=" bg-gray-100 p-4">
       {/* Header */}
       <header className="bg-white shadow rounded-lg p-4 mb-4">
         <div className="flex justify-between items-center">
