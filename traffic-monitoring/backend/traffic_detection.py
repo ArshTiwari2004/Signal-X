@@ -6,6 +6,10 @@ from ultralytics import YOLO
 import multiprocessing as mp
 from queue import Empty
 import os
+import asyncio
+import websockets
+import json
+import base64
 
 class TrafficDetector:
     def __init__(self, model_path="yolov8n.pt", confidence=0.25):
@@ -208,6 +212,37 @@ def get_test_frames():
     
     return frames
 
+async def send_detections(websocket, path):
+    detector = TrafficDetector()
+    cap = cv2.VideoCapture(0)  # Or your camera source
+    
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+            
+        # Process frame
+        vehicles_count, has_ambulance, processed_frame = detector.detect_vehicles(frame)
+        
+        # Convert frame to base64
+        _, buffer = cv2.imencode('.jpg', processed_frame)
+        frame_base64 = base64.b64encode(buffer).decode('utf-8')
+        
+        # Prepare detection data
+        detection_data = {
+            "type": "AMBULANCE" if has_ambulance else "VEHICLE",
+            "lane": 1,  # Modify based on your lane detection
+            "confidence": 90 if has_ambulance else 80,  # Example values
+            "frame": frame_base64,
+            "timestamp": time.time()
+        }
+        
+        await websocket.send(json.dumps(detection_data))
+        await asyncio.sleep(0.1)  # Control frame rate
+
+async def main():
+    async with websockets.serve(send_detections, "localhost", 8765):
+        await asyncio.Future()  # Run forever
 
 if __name__ == "__main__":
     # Demo usage
@@ -221,3 +256,6 @@ if __name__ == "__main__":
     
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    
+    # Start the websocket server
+    asyncio.run(main())
