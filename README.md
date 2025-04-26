@@ -410,7 +410,8 @@ signal-x/
 ![userflow](userflow.png)
 
 *Snapshots of the Citizen App*
-![Snapshots](Mobile.png)
+![image](https://github.com/user-attachments/assets/b677b6f3-5d5a-470d-b6e3-cf7eb016cf3e)
+
 
 
 
