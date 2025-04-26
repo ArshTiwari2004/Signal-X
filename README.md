@@ -410,7 +410,7 @@ signal-x/
 ![userflow](userflow.png)
 
 *Snapshots of the Citizen App*
-![userflow](mobile.png)
+![userflow](Mobile2.png)
 
 
 
