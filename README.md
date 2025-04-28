@@ -22,6 +22,22 @@
 [![React](https://img.shields.io/badge/React-18.x-blue.svg)](https://reactjs.org/)
 [![Flask](https://img.shields.io/badge/Flask-2.x-green.svg)](https://flask.palletsprojects.com/)
 
+
+<!-- GitHub Repo Badges -->
+[![GitHub Stars](https://img.shields.io/github/stars/ArshTiwari2004/Signal-X?style=social)](https://github.com/ArshTiwari2004/Signal-X/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/ArshTiwari2004/Signal-X?style=social)](https://github.com/ArshTiwari2004/Signal-X/network/members)
+[![GitHub Watchers](https://img.shields.io/github/watchers/ArshTiwari2004/Signal-X?style=social)](https://github.com/ArshTiwari2004/Signal-X/watchers)
+
+<!-- Activity and Stats -->
+[![Last Commit](https://img.shields.io/github/last-commit/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X/commits)
+[![Repo Size](https://img.shields.io/github/repo-size/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X)
+[![Languages](https://img.shields.io/github/languages/count/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X)
+[![Top Language](https://img.shields.io/github/languages/top/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X)
+[![Contributors](https://img.shields.io/github/contributors/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X/graphs/contributors)
+
+<!-- Deployment badge (Optional if deployed) -->
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)](https://vercel.com/)
+
 </div>
 
 ## 🌟 Overview
