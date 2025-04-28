@@ -69,17 +69,6 @@ Traditional traffic systems follow **fixed-timer logic**, blindly rotating signa
 - 🧍‍♂️ **Manual control dependency**, requiring more manpower  
 - 🧠 **No AI, No Adaptability**, making systems unresponsive and inefficient  
 
----
-
-### 🧠 The Need for a Smarter Solution
-
-To truly **revolutionize urban mobility**, we need a system that is:
-
-- ✅ **AI-powered** and capable of dynamic decision-making  
-- 🌐 **IoT-integrated** for real-time traffic sensing  
-- 🗺️ **Geospatially aware** for adaptive routing  
-- ⚙️ **Automated & Scalable**, reducing human dependency  
-
 > It’s time to move beyond timers and take the **smart route** to traffic management.
 
 ---
