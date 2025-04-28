@@ -112,14 +112,14 @@ Signal-X operates through a seamless, AI-driven pipeline that integrates video p
   <tr>
     <td align="center">
       <h3>AI Model Processing the Traffic</h3>
-      <img src="video-modal.gif" width="300" style="border-radius: 10px; border: 1px solid #ccc;" />
+      <img src="aivideo.gif" width="600" style="border-radius: 10px; border: 1px solid #ccc;" />
     </td>
     <td align="center" width="50">
       <h1>➡️</h1>
     </td>
     <td align="center">
       <h3>Result of the Processing Model</h3>
-      <img src="modal-result.png" width="300" style="border-radius: 10px; border: 1px solid #ccc;" />
+      <img src="modal-result.png" width="600" style="border-radius: 10px; border: 1px solid #ccc;" />
     </td>
   </tr>
 </table>
