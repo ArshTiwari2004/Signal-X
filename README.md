@@ -112,7 +112,7 @@ Signal-X operates through a seamless, AI-driven pipeline that integrates video p
   <tr>
     <td align="center">
       <h3>AI Model Processing the Traffic</h3>
-      <video src="modal-video.mov" width="300" controls style="border-radius: 10px; border: 1px solid #ccc;"></video>
+      <video src="video-modal.gif" width="300" controls style="border-radius: 10px; border: 1px solid #ccc;"></video>
     </td>
     <td align="center" width="50">
       <h1>➡️</h1>
