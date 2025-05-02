@@ -22,6 +22,22 @@
 [![React](https://img.shields.io/badge/React-18.x-blue.svg)](https://reactjs.org/)
 [![Flask](https://img.shields.io/badge/Flask-2.x-green.svg)](https://flask.palletsprojects.com/)
 
+
+<!-- GitHub Repo Badges -->
+[![GitHub Stars](https://img.shields.io/github/stars/ArshTiwari2004/Signal-X?style=social)](https://github.com/ArshTiwari2004/Signal-X/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/ArshTiwari2004/Signal-X?style=social)](https://github.com/ArshTiwari2004/Signal-X/network/members)
+[![GitHub Watchers](https://img.shields.io/github/watchers/ArshTiwari2004/Signal-X?style=social)](https://github.com/ArshTiwari2004/Signal-X/watchers)
+
+<!-- Activity and Stats -->
+[![Last Commit](https://img.shields.io/github/last-commit/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X/commits)
+[![Repo Size](https://img.shields.io/github/repo-size/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X)
+[![Languages](https://img.shields.io/github/languages/count/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X)
+[![Top Language](https://img.shields.io/github/languages/top/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X)
+[![Contributors](https://img.shields.io/github/contributors/ArshTiwari2004/Signal-X)](https://github.com/ArshTiwari2004/Signal-X/graphs/contributors)
+
+<!-- Deployment badge (Optional if deployed) -->
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)](https://vercel.com/)
+
 </div>
 
 ## 🌟 Overview
@@ -52,17 +68,6 @@ Traditional traffic systems follow **fixed-timer logic**, blindly rotating signa
 - 🚑 **Emergency vehicles stuck**, unable to move swiftly through intersections  
 - 🧍‍♂️ **Manual control dependency**, requiring more manpower  
 - 🧠 **No AI, No Adaptability**, making systems unresponsive and inefficient  
-
----
-
-### 🧠 The Need for a Smarter Solution
-
-To truly **revolutionize urban mobility**, we need a system that is:
-
-- ✅ **AI-powered** and capable of dynamic decision-making  
-- 🌐 **IoT-integrated** for real-time traffic sensing  
-- 🗺️ **Geospatially aware** for adaptive routing  
-- ⚙️ **Automated & Scalable**, reducing human dependency  
 
 > It’s time to move beyond timers and take the **smart route** to traffic management.
 
@@ -100,6 +105,31 @@ To truly **revolutionize urban mobility**, we need a system that is:
 ## 🧩 How Signal-X Works – Workflow
 
 Signal-X operates through a seamless, AI-driven pipeline that integrates video processing, intelligent decision-making, and hardware-level execution.
+
+
+
+<table>
+  <tr>
+    <td align="center">
+      <h3>AI Model Processing the Traffic</h3>
+      <img src="aivideo.gif" width="600" style="border-radius: 10px; border: 1px solid #ccc;" />
+    </td>
+    <td align="center" width="50">
+      <h1>➡️</h1>
+    </td>
+    <td align="center">
+      <h3>Result of the Processing Model</h3>
+      <img src="modal-result.png" width="600" style="border-radius: 10px; border: 1px solid #ccc;" />
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+
 
 ---
 
@@ -410,7 +440,8 @@ signal-x/
 ![userflow](userflow.png)
 
 *Snapshots of the Citizen App*
-![Snapshots](Mobile.png)
+![userflow](Mobile2.png)
+
 
 
 

@@ -410,7 +410,7 @@ def main():
     # Get the absolute path to the video file
     current_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(current_dir, "data")
-    video_path = os.path.join(data_dir, "test_video3.mp4")
+    video_path = os.path.join(data_dir, "video1.mp4")
     
     # Verify the video file exists
     if not os.path.exists(video_path):
