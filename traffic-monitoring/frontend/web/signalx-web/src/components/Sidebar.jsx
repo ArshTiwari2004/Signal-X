@@ -25,7 +25,7 @@ const Sidebar = () => {
       name: "Main",
       items: [
         { icon: LayoutDashboard, label: 'Dashboard', path: '/results', badge: null },
-        { icon: LayoutDashboard, label: 'Vehicle Density', path: '/traffic-detection', badge: { count: '1', color: 'bg-red-500' } },
+        { icon: LayoutDashboard, label: 'Vehicle Density', path: '/traffic-detection', badge: null },
         { icon: Map, label: 'Traffic Map', path: '/trafficmap', badge: null },
         { icon: Activity, label: 'Live Monitoring', path: '/signal-control', badge: { count: '2', color: 'bg-green-500' } },
         { icon: Camera, label: 'CCTV Feeds', path: '/cctv', badge: null },
