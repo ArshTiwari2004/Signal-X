@@ -362,20 +362,30 @@ class TrafficSystem:
         lane = self.lanes[lane_index]
         
         if lane.current_frame is not None:
-            # Convert OpenCV frame to pygame surface - FIX ROTATION ISSUE
-            frame = cv2.resize(lane.current_frame, (width, height))
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            # Don't rotate the image as it causes viewing problems
-            pygame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
-            surface.blit(pygame_surface, (x, y))
-            
-            # Show vehicle count overlay
-            count_bg = pygame.Surface((width//3, 30), pygame.SRCALPHA)
-            count_bg.fill((0, 0, 0, 180))  # Semi-transparent black
-            surface.blit(count_bg, (x + 10, y + 10))
-            
-            count_text = font_small.render(f"Detected: {lane.vehicle_count}", True, GREEN)
-            surface.blit(count_text, (x + 15, y + 15))
+            # Convert OpenCV frame to pygame surface - FIX RESIZE ISSUE
+            try:
+                # Ensure width and height are integers to prevent the resize error
+                width_int = int(width)
+                height_int = int(height)
+                frame = cv2.resize(lane.current_frame, (width_int, height_int))
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                # Don't rotate the image as it causes viewing problems
+                pygame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
+                surface.blit(pygame_surface, (x, y))
+                
+                # Show vehicle count overlay
+                count_bg = pygame.Surface((width//3, 30), pygame.SRCALPHA)
+                count_bg.fill((0, 0, 0, 180))  # Semi-transparent black
+                surface.blit(count_bg, (x + 10, y + 10))
+                
+                count_text = font_small.render(f"Detected: {lane.vehicle_count}", True, GREEN)
+                surface.blit(count_text, (x + 15, y + 15))
+            except Exception as e:
+                # Fallback if resize fails
+                print(f"Error rendering video frame: {e}")
+                # Show placeholder with error message
+                status_text = font_small.render(f"Frame display error: {str(e)[:30]}", True, RED)
+                surface.blit(status_text, (x + width/2 - status_text.get_width()/2, y + height/2 - 15))
         else:
             # Show placeholder if no video
             if lane_index == self.current_lane_index:
