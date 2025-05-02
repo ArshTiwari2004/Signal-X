@@ -12,6 +12,7 @@ import Settings from '../pages/Settings';
 import Results from '../pages/Results';
 import SignalControlPanel from '../pages/SignalControlPanel';
 import EmergencyVehicleTracker from '../pages/EmergencyVehicleTracker';
+import TrafficDetection from '../pages/Traffic';
 
 export const router = createBrowserRouter([
     {
@@ -61,7 +62,11 @@ export const router = createBrowserRouter([
             {
                 path: "/emergency-vehicle-tracker",
                 element: <EmergencyVehicleTracker />,
-            }
+            },
+            {
+                path: "/traffic-detection",
+                element: <TrafficDetection />,
+            },
 
 ]}
 ]);
