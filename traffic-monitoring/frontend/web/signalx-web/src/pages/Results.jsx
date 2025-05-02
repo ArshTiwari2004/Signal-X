@@ -5,43 +5,44 @@ export default function TrafficResults() {
   const [isActive, setIsActive] = useState(false);
   const [emergencyMode, setEmergencyMode] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [liveFrame, setLiveFrame] = useState(null);
+  const [videosLoaded, setVideosLoaded] = useState(false);
   const [location, setLocation] = useState({
     name: "Delhi",
     coords: { lat: 28.6139, lng: 77.2090 }
   });
 
+  // Video paths (assuming they are in the public/videos folder)
+  const laneVideos = [
+    { id: 1, src: "/data/lane1.mp4", title: "Lane 1 being processed" },
+    { id: 2, src: "/data/lane2.mp4", title: "Lane 2 being processed" },
+    { id: 3, src: "/data/lane3.mp4", title: "Lane 3 being processed" },
+    { id: 4, src: "/data/lane4.mp4", title: "Lane 4 being processed" }
+  ];
+
   // OpenStreetMap static image URL
   const getOpenStreetMapUrl = (lat, lng, zoom = 14) => {
-    // Using OpenStreetMap's static image API (no key required)
     return `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=${zoom}&size=400x300&maptype=mapnik`;
   };
 
   // Set traffic map based on location
   useEffect(() => {
-    // Get OSM static map URL for current location
     const mapUrl = getOpenStreetMapUrl(location.coords.lat, location.coords.lng);
-    
-    // Simulate traffic data loading
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 800);
-    
-    // In a real implementation, you would fetch real-time traffic data
-    // Since OSM doesn't have built-in traffic visualization like Google Maps,
-    // we're simulating this aspect
     document.getElementById('trafficMap')?.setAttribute('src', mapUrl);
   }, [location]);
 
   // Vehicle detection simulation
   useEffect(() => {
-    if (!isActive) return;
+    if (!isActive) {
+      setVideosLoaded(false);
+      return;
+    }
     
     setLoading(true);
-    // Initial delay to simulate connection
+    
+    // Simulate loading videos
     setTimeout(() => {
       setLoading(false);
+      setVideosLoaded(true);
       
       // Initial detection
       setDetections([
@@ -65,10 +66,7 @@ export default function TrafficResults() {
       
       // Set emergency mode for ambulance
       setEmergencyMode(true);
-      
-      // Set initial frame
-      setLiveFrame("https://via.placeholder.com/800x600/333333/FFFFFF?text=Traffic+Camera+Feed");
-    }, 1500);
+    }, 2000);
     
     // Continuous simulation
     const simulationInterval = setInterval(() => {
@@ -91,14 +89,6 @@ export default function TrafficResults() {
       // Update detections list
       setDetections(prev => [newDetection, ...prev.slice(0, 5)]);
       
-      // Randomly change camera feed to simulate movement (every 5 seconds)
-      if (Math.random() > 0.5) {
-        // In a real app, this would be an actual camera frame
-        const colors = ['333333', '444444', '555555'];
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        setLiveFrame(`https://via.placeholder.com/800x600/${randomColor}/FFFFFF?text=Traffic+Camera+Feed+${new Date().toLocaleTimeString()}`);
-      }
-      
       // Set emergency mode if ambulance is detected
       if (randomType === 'AMBULANCE') {
         setEmergencyMode(true);
@@ -115,7 +105,7 @@ export default function TrafficResults() {
   }, [isActive]);
 
   return (
-    <div className=" bg-gray-100 p-4">
+    <div className="bg-gray-100 p-4">
       {/* Header */}
       <header className="bg-white shadow rounded-lg p-4 mb-4">
         <div className="flex justify-between items-center">
@@ -149,18 +139,37 @@ export default function TrafficResults() {
           </div>
           <div className="p-4">
             {loading ? (
-              <div className="flex justify-center items-center h-64 bg-gray-200">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+              <div className="flex flex-col items-center justify-center h-[600px] bg-gray-200 rounded-lg">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                <p className="text-gray-600">Initializing camera feeds...</p>
+                <div className="w-full bg-gray-300 rounded-full h-1.5 mt-4 max-w-md">
+                  <div className="bg-blue-600 h-1.5 rounded-full animate-progress" style={{width: '70%'}}></div>
+                </div>
               </div>
-            ) : liveFrame ? (
-              <img 
-                src={liveFrame} 
-                alt="Live traffic feed" 
-                className="w-full h-64 object-cover rounded border-2 border-gray-200"
-              />
+            ) : videosLoaded ? (
+              <div className="space-y-4">
+              {laneVideos.map(video => (
+                <div key={video.id} className="relative bg-black rounded-lg overflow-hidden">
+                  <video 
+                    src={video.src} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    className="w-full h-80 object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-2 text-sm font-medium">
+                    {video.title}
+                  </div>
+                </div>
+              ))}
+            </div>
+            
             ) : (
-              <div className="flex justify-center items-center h-64 bg-gray-200">
-                <p className="text-gray-500">Camera feed will appear when monitoring is started</p>
+              <div className="flex flex-col items-center justify-center h-[600px] bg-gray-200 rounded-lg">
+                <svg className="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <p className="text-gray-500 text-center">Camera feeds will appear when monitoring is started</p>
               </div>
             )}
           </div>
@@ -170,7 +179,7 @@ export default function TrafficResults() {
         <div className="space-y-4">
           {/* Emergency Alert */}
           {emergencyMode && (
-            <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+            <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg animate-pulse">
               <div className="flex items-start">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
@@ -287,43 +296,53 @@ export default function TrafficResults() {
               </div>
             </div>
             <div className="p-4">
-              {loading ? (
-                <div className="h-48 flex items-center justify-center bg-gray-100 rounded">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-                </div>
-              ) : (
-                <>
-                  <img 
-                    id="trafficMap"
-                    src={getOpenStreetMapUrl(location.coords.lat, location.coords.lng)}
-                    alt="Traffic map"
-                    className="w-full h-48 object-cover rounded border"
-                  />
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-600 text-center">
-                      {location.name} Traffic • {new Date().toLocaleTimeString()}
-                    </p>
-                    <div className="flex justify-between text-xs mt-1">
-                      <div className="flex items-center">
-                        <span className="inline-block w-3 h-3 rounded-full bg-green-500 mr-1"></span>
-                        <span>Light</span>
-                      </div>
-                      <div className="flex items-center">
-                        <span className="inline-block w-3 h-3 rounded-full bg-yellow-500 mr-1"></span>
-                        <span>Moderate</span>
-                      </div>
-                      <div className="flex items-center">
-                        <span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1"></span>
-                        <span>Heavy</span>
-                      </div>
-                    </div>
+              <div className="relative">
+                <img 
+                  id="trafficMap"
+                  src={getOpenStreetMapUrl(location.coords.lat, location.coords.lng)}
+                  alt="Traffic map"
+                  className="w-full h-48 object-cover rounded border"
+                />
+                {loading && (
+                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
                   </div>
-                </>
-              )}
+                )}
+              </div>
+              <div className="mt-2">
+                <p className="text-sm text-gray-600 text-center">
+                  {location.name} Traffic • {new Date().toLocaleTimeString()}
+                </p>
+                <div className="flex justify-between text-xs mt-1">
+                  <div className="flex items-center">
+                    <span className="inline-block w-3 h-3 rounded-full bg-green-500 mr-1"></span>
+                    <span>Light</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="inline-block w-3 h-3 rounded-full bg-yellow-500 mr-1"></span>
+                    <span>Moderate</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1"></span>
+                    <span>Heavy</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Add some custom styles for the progress animation */}
+      <style jsx>{`
+        @keyframes progress {
+          0% { width: 0%; }
+          100% { width: 100%; }
+        }
+        .animate-progress {
+          animation: progress 2s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }

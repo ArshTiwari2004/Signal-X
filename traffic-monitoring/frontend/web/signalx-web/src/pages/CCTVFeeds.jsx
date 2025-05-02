@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Video, Maximize2, Minimize2, Settings, X } from "lucide-react";
-import video1 from "../../src/assets/videos/traffic1.mp4";
-import video2 from "../../src/assets/videos/traffic2.mp4";
-import video3 from "../../src/assets/videos/traffic3.mp4";
-import video4 from "../../src/assets/videos/traffic1.mp4";
+import video1 from "/normal/test_video.mp4";
+import video2 from "/normal/video3.mp4";
+import video3 from "/normal/traffic1.mp4";
+import video4 from "/normal/video1.mp4";
 
 const CCTVFeeds = () => {
   const videos = [video1, video2, video3, video4];
