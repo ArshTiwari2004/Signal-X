@@ -1,72 +1,67 @@
-import { createBrowserRouter } from 'react-router-dom';
+import {createBrowserRouter} from 'react-router-dom';
 import Home from '../components/Home';
-import Dashboard from '../pages/Dashboard';
 import DashboardLayout from '../layout/Layout';
+import TrafficResults from '../pages/Results';
+import CCTVFeeds from '../pages/CCTVFeed';
+import TrafficDetection from '../pages/Traffic';
 import TrafficMap from '../pages/Trafficmap';
-import Monitoring from '../pages/Livemonitoring';
-import LiveMonitoring from '../pages/Livemonitoring';
-import CCTVFeeds from '../pages/CCTVFeeds';
+import SignalControlPanel from '../pages/SignalControl';
+import EmergencyVehicleTracker from '../pages/EmergencyVehicleTracker';
+import Settings from '../pages/Settings';
 import Analytics from '../pages/Analytics';
 import Alerts from '../pages/Alerts';
-import Settings from '../pages/Settings';
-import Results from '../pages/Results';
-import SignalControlPanel from '../pages/SignalControlPanel';
-import EmergencyVehicleTracker from '../pages/EmergencyVehicleTracker';
-import TrafficDetection from '../pages/Traffic';
+import Places from '../pages/Vehicles';
 
 export const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Home />,
+        path:"/",
+        element:<Home/>,
     },
     {
-        element: <DashboardLayout />,
-        children: [
+        element:<DashboardLayout/>,
+        children:[
             {
-                path: "/dashboard",
-                element: <Dashboard />,
+                path:"/results",
+                element:<TrafficResults/>,
             },
             {
-                path: "/trafficmap",
-                element: <TrafficMap />,
+                path:"/cctv",
+                element:<CCTVFeeds/>,
             },
             {
-                path: "/monitoring",
-                element: <LiveMonitoring />,
+                path:"/traffic-detection",
+                element:<TrafficDetection/>,
             },
             {
-                path: "/cctv",
-                element: <CCTVFeeds />,
+                path:"/trafficmap",
+                element:<TrafficMap/>,
             },
             {
-                path: "/analytics",
-                element: <Analytics />,
+                path:"/signal-control",
+                element:<SignalControlPanel/>,
             },
             {
-                path: "/alerts",
-                element: <Alerts />,
+                path:"/Alerts",
+                element:<Alerts/>,
             },
             {
-                path: "/settings",
-                element: <Settings />,
+                path:"/Analytics",
+                element:<Analytics/>,
             },
             {
-                path: "/results",
-                element: <Results />,
-
+                path:"/emergency-vehicle-tracker",
+                element:<EmergencyVehicleTracker/>,
             },
             {
-                path: "/signal-control",
-                element: <SignalControlPanel />,
+                path:"/Settings",
+                element:<Settings/>,
             },
             {
-                path: "/emergency-vehicle-tracker",
-                element: <EmergencyVehicleTracker />,
+                path:"/Vehicles",
+                element:<Places/>,
             },
-            {
-                path: "/traffic-detection",
-                element: <TrafficDetection />,
-            },
-
-]}
-]);
+            
+            
+        ]
+    }
+])
