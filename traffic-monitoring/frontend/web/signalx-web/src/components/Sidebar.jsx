@@ -24,17 +24,19 @@ const Sidebar = () => {
     {
       name: "Main",
       items: [
+        { icon: Camera, label: 'CCTV Feeds', path: '/cctv', badge: null },
         { icon: LayoutDashboard, label: 'Dashboard', path: '/results', badge: null },
         { icon: LayoutDashboard, label: 'Vehicle Density', path: '/traffic-detection', badge: null },
+        { icon: LayoutDashboard, label: 'Vehicle Classification', path: '/vehicles', badge: null },
         { icon: Map, label: 'Traffic Map', path: '/trafficmap', badge: null },
         { icon: Activity, label: 'Live Monitoring', path: '/signal-control', badge: { count: '2', color: 'bg-green-500' } },
-        { icon: Camera, label: 'CCTV Feeds', path: '/cctv', badge: null },
-        { icon: User, label: 'Track', path: '/emergency-vehicle-tracker', badge: { count: '1', color: 'bg-red-500' } },
+        
       ]
     },
     {
       name: "Management",
       items: [
+        { icon: User, label: 'Track', path: '/emergency-vehicle-tracker', badge: { count: '1', color: 'bg-red-500' } },
         { icon: AlertTriangle, label: 'Alerts', path: '/alerts', badge: { count: '3', color: 'bg-red-500' } },
         { icon: BarChart3, label: 'Analytics', path: '/analytics', badge: null },
         { icon: Settings, label: 'Settings', path: '/settings', badge: null },
@@ -64,7 +66,7 @@ const Sidebar = () => {
         <div className="bg-blue-600 p-2 rounded-lg">
           <Map className="w-6 h-6 text-white" />
         </div>
-        {!collapsed && <h1 className="text-xl font-bold tracking-tight">Signal-X</h1>}
+        {!collapsed && <h1 className="text-xl font-bold tracking-tight">Traffic-AI</h1>}
       </div>
       
       {/* Navigation */}
