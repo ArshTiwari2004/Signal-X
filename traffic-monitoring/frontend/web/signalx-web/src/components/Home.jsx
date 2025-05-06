@@ -733,7 +733,7 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4 text-blue-300">Traffic-AI</h3>
+              <h3 className="text-xl font-bold mb-4 text-blue-300">Signal-X</h3>
               <p className="text-gray-400">AI-powered Smart Traffic Management System</p>
               <div className="flex space-x-4 mt-4">
                 <a href="#" className="text-gray-400 hover:text-blue-300 transition">
@@ -823,7 +823,7 @@ const Home = () => {
           </div>
 
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 mb-4 md:mb-0">© {new Date().getFullYear()} Traffic-AI. All rights reserved.</p>
+            <p className="text-gray-400 mb-4 md:mb-0">© {new Date().getFullYear()} Signal-X. All rights reserved.</p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-blue-300 transition text-sm">Privacy Policy</a>
               <a href="#" className="text-gray-400 hover:text-blue-300 transition text-sm">Terms of Service</a>

@@ -47,8 +47,8 @@ const Navbar = () => {
               <h1 className={`text-2xl font-bold tracking-tight transition-all duration-300 ${
                 scrolled ? "scale-90" : ""
               }`}>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Traffic</span>
-                <span className="text-blue-500">-AI</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Signal</span>
+                <span className="text-blue-500">-X</span>
               </h1>
             </a>
           </div>
@@ -84,7 +84,7 @@ const Navbar = () => {
 
             <div className="flex items-center space-x-4">
               <a
-                href="https://github.com/ArshTiwari2004/Traffic-AI"
+                href="https://github.com/ArshTiwari2004/Signal-X"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-blue-600 hover:text-blue-700 transition-colors border border-gray-200 hover:border-blue-500 rounded-full px-4 py-1.5 hover:bg-blue-50"
@@ -148,7 +148,7 @@ const Navbar = () => {
           </button>
           <div className="pt-2 pb-2">
             <a
-              href="https://github.com/ArshTiwari2004/Traffic-AI"
+              href="https://github.com/ArshTiwari2004/Signal-X"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center py-3 px-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors font-medium"

@@ -166,7 +166,7 @@ const Places = () => {
     <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Traffic-AI Management System</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Signal-X Management System</h1>
           <p className="text-lg text-gray-600">
             AI-powered real-time traffic monitoring and optimization
           </p>
@@ -229,7 +229,7 @@ const Places = () => {
                     <RotateSpinner size={40} color="#3B82F6" />
                     <p className="text-gray-700 font-medium">{processingStep}</p>
                     <p className="text-sm text-gray-500 text-center">
-                      Traffic-AI is analyzing the live feed using YOLOv8 object detection...
+                      Signal-X is analyzing the live feed using YOLOv8 object detection...
                     </p>
                   </div>
                 </div>
@@ -333,7 +333,7 @@ const Places = () => {
         </div>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">How Traffic-AI Works</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">How Signal-X Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4 border border-gray-200 rounded-lg">
               <div className="flex items-center mb-3">
