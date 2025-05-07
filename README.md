@@ -431,7 +431,7 @@ signal-x/
 
 ## 🖼️ Snippets 
 *Landing page of Signal-X*
-![Landingpage](Landingpage.png)
+![Landingpage](Home.png)
 
 *Dashboard of Signal-X*
 ![Dashboard](dashboard.png)
