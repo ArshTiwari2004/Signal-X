@@ -78,6 +78,13 @@ Traditional traffic systems follow **fixed-timer logic**, blindly rotating signa
 
 **Signal-X** is an AI-driven Smart Traffic Management System that transforms urban mobility using the power of **computer vision**, **IoT**, and **geospatial intelligence**. Designed to be **scalable**, **real-time**, and **intelligent**, Signal-X optimizes traffic flow, reduces congestion, and ensures faster emergency response through dynamic signal control.
 
+
+<p align="center">
+  <img src="workflow.png" alt="Workflow of Signal-X" />
+</p>
+
+
+
 ---
 
 ### 🚀 Key Features
@@ -433,8 +440,11 @@ signal-x/
 *Landing page of Signal-X*
 ![Landingpage](Home.png)
 
-*Dashboard of Signal-X*
-![Dashboard](dashboard.png)
+*Live CCTV Feeds in Signal-X*
+![Dashboard](live-cctv-feeds.png)
+
+*RTSP streams processed in real-time*
+![Dashboard](results-rtsp-stream.png)
 
 *Auth workflow*
 ![userflow](userflow.png)
