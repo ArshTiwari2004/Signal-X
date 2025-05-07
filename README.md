@@ -42,7 +42,7 @@
 
 ## 🌟 Overview
 
-Signal-X is an AI-driven smart traffic management system that uses YOLO-based vehicle detection, Arduino-controlled signals, and MapMyIndia’s geospatial analytics to optimize traffic flow in real-time. It prioritizes emergency vehicles, prevents congestion, and enhances road safety through dynamic signal adjustments using live video feeds. Scalable and future-ready, Signal-X is adaptable for cities of all sizes, making urban commuting smarter and more efficient.
+Signal-X is an AI-driven smart traffic management system that uses advanced computer vision, Arduino-controlled signals, and MapmyIndia’s geospatial analytics to optimize traffic flow in real-time. It prioritizes emergency vehicles, prevents congestion, and enhances road safety through dynamic signal adjustments using live video feeds. Scalable and future-ready, Signal-X is adaptable for cities of all sizes, making urban commuting smarter and more efficient.
 
 
 ## 🚧 Problem Statement
