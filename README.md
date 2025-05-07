@@ -441,10 +441,10 @@ signal-x/
 ![Landingpage](Home.png)
 
 *Live CCTV Feeds in Signal-X*
-![Dashboard](live-cctv-feeds.png)
+![Dashboard](live-cctv-feed.png)
 
 *RTSP streams processed in real-time*
-![Dashboard](results-rtsp-stream.png)
+![Dashboard](results-rtspstream.png)
 
 *Auth workflow*
 ![userflow](userflow.png)
