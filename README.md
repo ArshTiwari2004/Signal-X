@@ -459,6 +459,7 @@ signal-x/
 - Utilize AI to detect accidents or breakdowns via CCTV analysis. The system can instantly alert authorities and reroute traffic to prevent congestion.
 
 
+
 ## 🤝 Contributing
 #### Contributions are welcome! Please feel free to submit a Pull Request.
 
